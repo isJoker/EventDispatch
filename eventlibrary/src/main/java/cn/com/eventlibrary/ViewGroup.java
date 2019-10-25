@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class ViewGroup extends View {
 
+    private static final int MAX_RECYCLED = 32;
     //存放子控件,用List方便转为数组
     List<View> childList = new ArrayList<>();
     private View[] mChildren = new View[0];
@@ -142,12 +143,15 @@ public class ViewGroup extends View {
             return target;
         }
 
+        /**
+         * 只有在cancel等系统处理中才会调用事件
+         */
         public void recycle() {
             if (child == null) {
                 throw new IllegalStateException("已经回收过了");
             }
             synchronized (sRecycleLock) {
-                if (sRecycledCount < 32) {
+                if (sRecycledCount < MAX_RECYCLED) {
                     next = sRecycledBin;
                     sRecycledBin = this;
                     sRecycledCount++;
