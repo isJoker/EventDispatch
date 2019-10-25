@@ -1,0 +1,50 @@
+package cn.com.eventlibrary;
+
+/**
+ * Created by JokerWan on 2019-10-24.
+ * Function:
+ */
+public class MotionEvent {
+
+    public static final int ACTION_DOWN = 0;
+    public static final int ACTION_UP = 1;
+    public static final int ACTION_MOVE = 2;
+    public static final int ACTION_CANCEL = 3;
+
+    // 当前的event action类型
+    private int actionMasked;
+    private int x;
+    private int y;
+
+    public MotionEvent() {
+    }
+
+    public MotionEvent(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getActionMasked() {
+        return actionMasked;
+    }
+
+    public void setActionMasked(int actionMasked) {
+        this.actionMasked = actionMasked;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+}
